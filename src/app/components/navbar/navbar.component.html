@@ -1,0 +1,82 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top float mb-5">
+  <a class="navbar-brand" [routerLink]="['/']">Imart</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="container">
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['/']"
+            routerLinkActive="router-link-active"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['/mobile']"
+            routerLinkActive="router-link-active"
+            >Mobile</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['/']"
+            routerLinkActive="router-link-active"
+            >Laptop</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Accessories</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ml-auto" *ngIf="authService.user; else login">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Cart</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            id="navbarDropdown"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Hi, {{ this.authService.user.displayName }}
+          </a>
+          <div class="dropdown-menu">
+            <button class="dropdown-item">
+              Your Orders
+            </button>
+            <div class="dropdown-divider"></div>
+            <button class="dropdown-item" (click)="logout()">Logout</button>
+          </div>
+        </li>
+      </ul>
+      <ng-template #login>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <button class="btn btn-danger btn-sm" (click)="googleLogin()">
+              Login With Google
+            </button>
+          </li>
+        </ul>
+      </ng-template>
+    </div>
+  </div>
+</nav>

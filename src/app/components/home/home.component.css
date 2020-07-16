@@ -1,0 +1,11 @@
+cdk-virtual-scroll-viewport {
+  height: 900px;
+  width: 100%;
+  max-width: auto;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
