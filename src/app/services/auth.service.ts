@@ -2,14 +2,19 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { auth } from 'firebase/app';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  public user: any;
+  public user: any = null;
 
-  constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) {
+  constructor(
+    private afAuth: AngularFireAuth,
+    private afs: AngularFirestore,
+    private router: Router
+  ) {
     this.afAuth.authState.subscribe((user) => {
       this.user = user;
     });
@@ -23,7 +28,9 @@ export class AuthService {
   }
 
   async logout(): Promise<any> {
-    return await this.afAuth.signOut();
+    return await this.afAuth.signOut().then(() => {
+      this.router.navigate(['home']);
+    });
   }
 
   async updateUserData(user): Promise<any> {

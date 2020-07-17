@@ -5,7 +5,8 @@
   <cdk-virtual-scroll-viewport itemSize="100">
     <div class="row">
       <div
-        class="col-xm-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 py-2" id="product-div"
+        class="col-xm-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 py-2"
+        id="product-div"
         *cdkVirtualFor="let product of products"
       >
         <div class="card">
@@ -17,7 +18,11 @@
             </p>
             <span class="font-weight-bold"> ₹{{ product.price }}</span>
             <div class="card text-right">
-              <a href="#" class="btn btn-outline-danger btn-sm">Add to Cart</a>
+              <a
+                class="btn btn-outline-danger btn-sm"
+                (click)="addToCart( product.id, product.title, product.price, '1' )"
+                >Add to Cart</a
+              >
             </div>
           </div>
         </div>

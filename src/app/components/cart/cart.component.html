@@ -1,0 +1,37 @@
+<div class="container" *ngIf="authService.user">
+  <h3>Cart</h3>
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="row">Photo</th>
+        <th scope="col">Product</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <img
+            src="../../../assets/images/mobile-resize-1.jpg"
+            class="img-thumbnail"
+          />
+        </td>
+        <td>Mobile 1</td>
+        <td><input type="number" min="1" max="10" value="1" /></td>
+        <td><i class="fa fa-rupee"></i> 4999</td>
+        <td><i class="btn fa fa-trash"></i></td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td></td>
+        <td></td>
+        <td>
+          <span><i class="fa fa-rupee"></i> 4999</span>
+        </td>
+        <td><button class="btn btn-danger btn-md">Checkout</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
