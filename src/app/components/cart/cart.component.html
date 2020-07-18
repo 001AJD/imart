@@ -6,29 +6,48 @@
         <th scope="row">Photo</th>
         <th scope="col">Product</th>
         <th scope="col">Quantity</th>
-        <th scope="col">Price</th>
+        <th scope="col">Price ( <i class="fa fa-rupee"></i> )</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr *ngFor="let item of cartService.cart">
         <td>
           <img
             src="../../../assets/images/mobile-resize-1.jpg"
             class="img-thumbnail"
           />
         </td>
-        <td>Mobile 1</td>
-        <td><input type="number" min="1" max="10" value="1" /></td>
-        <td><i class="fa fa-rupee"></i> 4999</td>
-        <td><i class="btn fa fa-trash"></i></td>
+        <td>{{ item.title }}</td>
+        <td>
+          <input
+            type="number"
+            name="productQty"
+            min="1"
+            max="10"
+            [value]="item.quantity"
+            (change)="
+              updateProductQuantity(item.id, item.price, item.title, $event)
+            "
+          />
+        </td>
+        <td><i class="fa fa-rupee"></i> {{ item.price }}</td>
+        <td>
+          <i
+            class="btn fa fa-trash"
+            (click)="removeItem(item.id, item.price, item.quantity, item.title)"
+          ></i>
+        </td>
       </tr>
+      <tr></tr>
       <tr>
         <td>Total</td>
         <td></td>
         <td></td>
         <td>
-          <span><i class="fa fa-rupee"></i> 4999</span>
+          <span class="font-weight-bold"
+            ><i class="fa fa-rupee"></i>{{ cartService.cartTotal }}</span
+          >
         </td>
         <td><button class="btn btn-danger btn-md">Checkout</button></td>
       </tr>

@@ -40,7 +40,6 @@ export class AuthService {
       displayName: user.displayName,
       photoURL: user.photoURL,
     };
-    console.log('update user data called');
 
     return await this.afs
       .collection('users')

@@ -6,6 +6,7 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { CartComponent } from './components/cart/cart.component';
 
 const routes: Routes = [
+  { path: 'home', component: HomeComponent },
   { path: 'mobile', component: ProductListComponent },
   { path: 'cart', component: CartComponent },
   { path: '', component: HomeComponent },
