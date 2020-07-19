@@ -59,7 +59,7 @@ export class ProductService {
     if (sortOrder === 'asc') {
       this.products = this.af
         .collection('products', (ref) =>
-          ref.where('category', '==', 'mobile').orderBy('price', 'asc')
+          ref.where('category', '==', 'mobile').orderBy('price', sortOrder)
         )
         .snapshotChanges()
         .pipe(

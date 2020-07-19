@@ -1,32 +1,71 @@
 <app-carousel></app-carousel>
 
-<div class="container pb-lg-4">
-  <h4 class="text-center">All Products (Virtual Scrollbar)</h4>
-  <cdk-virtual-scroll-viewport itemSize="100">
-    <div class="row">
-      <div
-        class="col-xm-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 py-2"
-        id="product-div"
-        *cdkVirtualFor="let product of products"
-      >
-        <div class="card">
-          <img src="../../../assets/images/img-1.jpg" class="card-img-top" />
-          <div class="card-body">
-            <h5 class="card-title">{{ product.title }}</h5>
-            <p class="card-text text-justify">
-              {{ product.description }}
-            </p>
-            <span class="font-weight-bold"> ₹{{ product.price }}</span>
-            <div class="card text-right">
-              <a
-                class="btn btn-outline-danger btn-sm"
-                (click)="addToCart( product.id, product.title, product.price, '1' )"
-                >Add to Cart</a
-              >
-            </div>
-          </div>
-        </div>
+<div class="container">
+  <div class="card-deck">
+    <div class="card">
+      <img
+        src="../../../assets/images/sofa-1.jpg"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">
+          This is a longer card with supporting text below as a natural lead-in
+          to additional content. This content is a little bit longer.
+        </p>
+        <button
+          class="btn btn-outline-secondary btn-md"
+          (click)="AllProducts()"
+        >
+          Explore <i class="fa fa-arrow-right" aria-hidden="true"></i>
+        </button>
       </div>
     </div>
-  </cdk-virtual-scroll-viewport>
+    <div class="card">
+      <img
+        src="../../../assets/images/living-room-1.jpg"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">
+          This card has supporting text below as a natural lead-in to additional
+          content.
+        </p>
+        <p class="card-text">
+          <button
+            class="btn btn-outline-secondary btn-md"
+            (click)="AllProducts()"
+          >
+            Explore <i class="fa fa-arrow-right" aria-hidden="true"></i>
+          </button>
+        </p>
+      </div>
+    </div>
+    <div class="card">
+      <img
+        src="../../../assets/images/living-room-2.jpg"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">
+          This is a wider card with supporting text below as a natural lead-in
+          to additional content. This card has even longer content than the
+          first to show that equal height action.
+        </p>
+        <p class="card-text">
+          <button
+            class="btn btn-outline-secondary btn-md"
+            (click)="AllProducts()"
+          >
+            Explore <i class="fa fa-arrow-right" aria-hidden="true"></i>
+          </button>
+        </p>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,0 +1,14 @@
+h1 {
+  color: whitesmoke;
+}
+
+#banner-content {
+  display: block;
+}
+
+#banner {
+  background-image: URL("../../../../assets/images/img-3.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+}
