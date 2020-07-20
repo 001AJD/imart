@@ -2,17 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { AuthService } from '../../services/auth.service';
 import { CartService } from '../../services/cart.service';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
-  selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css'],
+  selector: 'app-product-list2',
+  templateUrl: './product-list2.component.html',
+  styleUrls: ['./product-list2.component.css'],
 })
-export class ProductListComponent implements OnInit {
-  selectedOption: string;
+export class ProductList2Component implements OnInit {
   products: any[];
-  heading: string;
   sortOption = [
     { name: 'Default', value: 'all' },
     { name: 'Price: Low to high', value: 'asc' },
@@ -20,16 +17,12 @@ export class ProductListComponent implements OnInit {
   ];
   constructor(
     private ps: ProductService,
-    private route: Router,
     private authService: AuthService,
     private cartService: CartService
   ) {}
 
   ngOnInit(): void {
-    const h = this.route.url;
-    this.heading = h.replace('/', ' ');
-
-    this.ps.getAllMobile().subscribe((data) => {
+    this.ps.getAllProducts().subscribe((data) => {
       this.products = data;
     });
   }

@@ -10,6 +10,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 export class CartService {
   cart: any[];
   cartTotal: number;
+  cartTotalItem: number;
   userId: string;
 
   constructor(private afs: AngularFirestore, private afAuth: AngularFireAuth) {}
@@ -77,6 +78,22 @@ export class CartService {
             },
             { merge: true }
           );
+      }
+    });
+  }
+
+  async getCartTotalItem(): Promise<any> {
+    this.afAuth.authState.subscribe((user) => {
+      if (user) {
+        this.userId = user.uid;
+
+        this.afs
+          .collection('users')
+          .doc<User>(`${this.userId}`)
+          .valueChanges()
+          .subscribe((userDoc) => {
+            this.cartTotalItem = userDoc.cart.length;
+          });
       }
     });
   }

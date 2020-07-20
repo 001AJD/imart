@@ -23,6 +23,7 @@ import { CarouselComponent } from './components/home/carousel/carousel.component
 import { SortBarComponent } from './components/shared/sort-bar/sort-bar.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { CartComponent } from './components/cart/cart.component';
+import { ProductList2Component } from './components/product-list2/product-list2.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { CartComponent } from './components/cart/cart.component';
     SortBarComponent,
     ProductListComponent,
     CartComponent,
+    ProductList2Component,
   ],
   imports: [
     BrowserModule,

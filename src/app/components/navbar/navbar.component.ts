@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,10 +8,14 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  constructor(public authService: AuthService) {
-  }
+  constructor(
+    public authService: AuthService,
+    public cartService: CartService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.cartService.getCartTotalItem();
+  }
 
   googleLogin(): void {
     this.authService.googleSignIn();
@@ -18,6 +23,4 @@ export class NavbarComponent implements OnInit {
   logout(): void {
     this.authService.logout();
   }
-
-
 }

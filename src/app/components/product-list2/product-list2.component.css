@@ -1,0 +1,22 @@
+cdk-virtual-scroll-viewport {
+  height: 900px;
+  width: 100%;
+  max-width: auto;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+.card-deck {
+  padding-bottom: 2rem;
+}
+
+.card:hover {
+  -ms-transform: none; /* IE 9 */
+  -webkit-transform: none; /* Safari 3-8 */
+  transform: none;
+  cursor: pointer;
+  transition: 0.5s;
+}

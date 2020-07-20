@@ -27,15 +27,15 @@
             class="nav-link"
             [routerLink]="['/mobile']"
             routerLinkActive="router-link-active"
-            >Mobile</a
+            >Product List 1</a
           >
         </li>
         <li class="nav-item">
           <a
             class="nav-link"
-            [routerLink]="['/']"
+            [routerLink]="['product-list-2']"
             routerLinkActive="router-link-active"
-            >Laptop</a
+            >Product List 2</a
           >
         </li>
         <li class="nav-item">
@@ -46,17 +46,17 @@
       <ul class="navbar-nav ml-auto" *ngIf="authService.user; else login">
         <li class="nav-item">
           <a
-            class="nav-link"
+            class="nav-link btn"
             [routerLink]="['cart']"
             routerLinkActive="router-link-active"
-            >Cart</a
+          >
+            Cart <span class="badge badge-secondary">{{ cartService.cartTotalItem }}</span></a
           >
         </li>
 
-
         <li class="nav-item dropdown">
           <a
-            class="nav-link dropdown-toggle"
+            class="nav-link dropdown-toggle btn"
             id="navbarDropdown"
             role="button"
             data-toggle="dropdown"
@@ -77,7 +77,10 @@
       <ng-template #login>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <button class="btn btn-outline-secondary btn-sm" (click)="googleLogin()">
+            <button
+              class="btn btn-outline-secondary btn-sm"
+              (click)="googleLogin()"
+            >
               Google Login
             </button>
           </li>

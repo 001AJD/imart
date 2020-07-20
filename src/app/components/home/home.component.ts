@@ -3,6 +3,7 @@ import { ProductService } from '../../services/product.service';
 import { AuthService } from '../../services/auth.service';
 import { CartService } from '../../services/cart.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,8 @@ export class HomeComponent implements OnInit {
     private ps: ProductService,
     private authService: AuthService,
     private cartService: CartService,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) {
     this.ps.getAllProducts().subscribe((data) => {
       this.products = data;
