@@ -1,0 +1,33 @@
+#color-palette span:hover {
+  cursor: pointer;
+  border: 1px solid gray;
+}
+
+.color-circle {
+  height: 1.2rem;
+  width: 1.2rem;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0.1rem 0.4rem;
+}
+
+.brown {
+  background-color: brown;
+}
+
+.red {
+  background-color: red;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.custom-control > label,
+input hover {
+  cursor: pointer;
+}

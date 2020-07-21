@@ -24,6 +24,8 @@ import { SortBarComponent } from './components/shared/sort-bar/sort-bar.componen
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { CartComponent } from './components/cart/cart.component';
 import { ProductList2Component } from './components/product-list2/product-list2.component';
+import { FilterPaletteComponent } from './components/shared/filter-palette/filter-palette.component';
+import { SideFilterPaletteComponent } from './components/shared/side-filter-palette/side-filter-palette.component';
 
 
 @NgModule({
@@ -36,6 +38,8 @@ import { ProductList2Component } from './components/product-list2/product-list2.
     ProductListComponent,
     CartComponent,
     ProductList2Component,
+    FilterPaletteComponent,
+    SideFilterPaletteComponent,
   ],
   imports: [
     BrowserModule,

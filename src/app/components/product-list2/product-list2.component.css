@@ -1,7 +1,7 @@
 cdk-virtual-scroll-viewport {
   height: 900px;
   width: 100%;
-  max-width: auto;
+  max-width: 100%;
 }
 
 ::-webkit-scrollbar {
@@ -20,3 +20,4 @@ cdk-virtual-scroll-viewport {
   cursor: pointer;
   transition: 0.5s;
 }
+

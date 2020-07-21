@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { AuthService } from '../../services/auth.service';
 import { CartService } from '../../services/cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-list2',
@@ -9,6 +10,7 @@ import { CartService } from '../../services/cart.service';
   styleUrls: ['./product-list2.component.css'],
 })
 export class ProductList2Component implements OnInit {
+  heading: string;
   products: any[];
   sortOption = [
     { name: 'Default', value: 'all' },
@@ -18,13 +20,17 @@ export class ProductList2Component implements OnInit {
   constructor(
     private ps: ProductService,
     private authService: AuthService,
-    private cartService: CartService
+    private cartService: CartService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.ps.getAllProducts().subscribe((data) => {
       this.products = data;
     });
+
+    const h = this.router.url;
+    this.heading = h.replace('/', ' ');
   }
 
   sortProducts(sortOrder: string): void {

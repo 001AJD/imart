@@ -1,52 +1,99 @@
-<div class="container">
-  <div class="float-right">
-    <label for="sorting">Sort: </label>
+<!-- <div class="row ml-5 pl-5">
+  <div class="col-10 col-lg-11 text-right">
+    <label for="sorting" class="">Sort: </label>
     <select class="" id="sorting" (change)="sortProducts($event.target.value)">
       <option *ngFor="let option of sortOption" [value]="option.value">{{
         option.name
       }}</option>
     </select>
   </div>
-</div>
-<br />
-
-<div class="container mt-2">
-  <h4>Product List 2</h4>
-  <cdk-virtual-scroll-viewport itemSize="100">
+</div> -->
+<!-- main div starts here -->
+<div class="mx-xs-2 mx-sm-2 mx-md-2 mx-lg-5 px-2" id="div-main">
+  <div class="row mt-2">
+    <!-- filter palette div starts here -->
     <div
-      class="card mb-3"
-      style="max-width: 100%;"
-      *cdkVirtualFor="let product of products"
+      id="div-filter-palette"
+      class="col-md-2 col-lg-2 col-xl-2 d-none d-lg-block d-xl-block mt-lg-4 mt-xl-4"
     >
-      <div class="row no-gutters">
-        <div class="col-md-4">
-          <img
-            src="../../../assets/images/sofa-1.jpg"
-            class="card-img"
-            alt="..."
-          />
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h4 class="card-title font-weight-bold">{{ product.title }}</h4>
-            <p class="card-text text-justify">
-              {{ product.description }}
-            </p>
-            <div class="mt-lg-5">
-              <span class="font-weight-bold btn">₹ {{ product.price }}</span>
+      <app-filter-palette></app-filter-palette>
+    </div>
+    <!-- filter-palette-div  ends here -->
 
-              <button
-                class="btn btn-outline-danger btn-sm float-right"
-                (click)="
-                  addToCart(product.id, product.title, product.price, '1')
-                "
+    <!-- div-all-products starts here -->
+    <div
+      class="col-xs-9 col-sm-12 col-md-12 col-lg-10 col-xl-10"
+      id="div-all-products"
+    >
+    <!-- container for filter button and sort dropdown starts -->
+      <div class="container">
+        <!-- div for filter button and sorting pannel -->
+        <div class="row px-xs-3" id="div-filter-sort-palette">
+          <div class="col-xs-2 d-lg-none d-xl-none" id="filter-button">
+
+            <i class="fa fa-filter btn btn-sm  dropdown-toggle" aria-hidden="true"></i>
+          </div>
+          <!-- sort product dropdown starts here -->
+          <div class="col-xs-10 ml-auto" id="sort-product-dropdown">
+            <label for="sorting" class="">Sort : </label>
+            <select
+              class=""
+              id="sorting"
+              (change)="sortProducts($event.target.value)"
+            >
+              <option
+                *ngFor="let option of sortOption"
+                [value]="option.value"
+                >{{ option.name }}</option
               >
-                Add to cart
-              </button>
+            </select>
+          </div>
+          <!-- sort product drop down ends here -->
+        </div>
+        <!-- filter-button-sort-palette div ends here -->
+      </div>
+    <!-- container for filter button and sort dropdown ends -->
+
+
+      <cdk-virtual-scroll-viewport itemSize="90">
+        <div
+          class="card mb-3"
+          style="max-width: 100%;"
+          *cdkVirtualFor="let product of products"
+        >
+          <div class="row no-gutters">
+            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+              <img
+                src="../../../assets/images/sofa-1.jpg"
+                class="card-img"
+                alt="..."
+              />
+            </div>
+            <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
+              <div class="card-body">
+                <h4 class="card-title font-weight-bold">{{ product.title }}</h4>
+                <p class="card-text text-justify">
+                  {{ product.description }}
+                </p>
+                <div class="mt-lg-5">
+                  <span class="font-weight-bold btn"
+                    >₹ {{ product.price }}</span
+                  >
+
+                  <button
+                    class="btn btn-outline-danger btn-sm float-right"
+                    (click)="
+                      addToCart(product.id, product.title, product.price, '1')
+                    "
+                  >
+                    Add to cart
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </cdk-virtual-scroll-viewport>
     </div>
-  </cdk-virtual-scroll-viewport>
+  </div>
 </div>
