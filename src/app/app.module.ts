@@ -10,7 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AngularMaterialModule } from './modules/angular-material/angular-material.module';
+
 
 import { ProductService } from './services/product.service';
 import { AuthService } from './services/auth.service';
@@ -49,8 +49,7 @@ import { SideFilterPaletteComponent } from './components/shared/side-filter-pale
     AngularFireAuthModule,
     ScrollingModule,
     FormsModule,
-    BrowserAnimationsModule,
-    AngularMaterialModule
+    BrowserAnimationsModule
   ],
   providers: [ProductService, AuthService, CartService],
   bootstrap: [AppComponent],

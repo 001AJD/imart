@@ -12,6 +12,6 @@ export class CarouselComponent implements OnInit {
   ngOnInit(): void {}
 
   AllProducts(): void{
-    this.router.navigate(['mobile']);
+    this.router.navigate(['product-list-2']);
   }
 }
