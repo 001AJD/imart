@@ -9,22 +9,32 @@
   border-radius: 50%;
   display: inline-block;
   margin: 0.1rem 0.4rem;
+  border: 1px solid gray;
 }
 
 .brown {
   background-color: brown;
 }
-
 .red {
   background-color: red;
 }
-
 .blue {
   background-color: blue;
 }
-
 .yellow {
   background-color: yellow;
+}
+.green {
+  background-color: green;
+}
+.white {
+  background-color: white;
+}
+.black {
+  background-color: black;
+}
+.gray {
+  background-color: gray;
 }
 
 .custom-control > label,

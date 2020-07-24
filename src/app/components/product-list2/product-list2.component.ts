@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 export class ProductList2Component implements OnInit {
   heading: string;
   products: any[];
+  showFilterPalette = false;
+
   sortOption = [
     { name: 'Default', value: 'all' },
     { name: 'Price: Low to high', value: 'asc' },
@@ -62,5 +64,10 @@ export class ProductList2Component implements OnInit {
     } else {
       alert('login to add Product to cart');
     }
+  }
+
+  toggleFilterPalette(): void {
+    this.showFilterPalette = !this.showFilterPalette;
+    console.log(this.showFilterPalette);
   }
 }

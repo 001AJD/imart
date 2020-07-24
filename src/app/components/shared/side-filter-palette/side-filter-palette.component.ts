@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-side-filter-palette',
   templateUrl: './side-filter-palette.component.html',
-  styleUrls: ['./side-filter-palette.component.css']
+  styleUrls: ['./side-filter-palette.component.css'],
 })
 export class SideFilterPaletteComponent implements OnInit {
+  @Input() showMe: boolean;
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

@@ -1,1 +1,103 @@
-<p>side-filter-palette works!</p>
+<div *ngIf="showMe" class>
+  <h2 class="font-weight-bold">Filters</h2>
+
+  <div class="" id="product-condition">
+    <h5 class="font-weight-bold">Condition</h5>
+
+    <div class="custom-control custom-checkbox">
+      <input
+        type="checkbox"
+        class="custom-control-input"
+        id="side-customCheck1"
+      />
+      <label class="custom-control-label" for="side-customCheck1">New</label>
+    </div>
+
+    <div class="custom-control custom-checkbox">
+      <input
+        type="checkbox"
+        class="custom-control-input"
+        id="side-customCheck2"
+      />
+      <label class="custom-control-label" for="side-customCheck2">Used</label>
+    </div>
+
+    <div class="custom-control custom-checkbox">
+      <input
+        type="checkbox"
+        class="custom-control-input"
+        id="side-customCheck3"
+      />
+      <label class="custom-control-label" for="side-customCheck3"
+        >Refurbished</label
+      >
+    </div>
+  </div>
+
+  <div class="" id="price-filter-radio">
+    <h5 class="font-weight-bold">Price</h5>
+    <div class="custom-control custom-radio">
+      <input
+        type="radio"
+        id="side-customRadio1"
+        name="customRadio"
+        class="custom-control-input"
+      />
+      <label class="custom-control-label" for="side-customRadio1"
+        >Under 199</label
+      >
+    </div>
+    <div class="custom-control custom-radio">
+      <input
+        type="radio"
+        id="side-customRadio2"
+        name="customRadio"
+        class="custom-control-input"
+      />
+      <label class="custom-control-label" for="side-customRadio2"
+        >Under 499</label
+      >
+    </div>
+    <div class="custom-control custom-radio">
+      <input
+        type="radio"
+        id="side-customRadio3"
+        name="customRadio"
+        class="custom-control-input"
+      />
+      <label class="custom-control-label" for="side-customRadio3"
+        >Under 599</label
+      >
+    </div>
+    <div class="custom-control custom-radio">
+      <input
+        type="radio"
+        id="side-customRadio4"
+        name="customRadio"
+        class="custom-control-input"
+      />
+      <label class="custom-control-label" for="side-customRadio4"
+        >Under 799</label
+      >
+    </div>
+  </div>
+
+  <div id="custom-price-input">
+    <label for="side-customRange1">Price Range</label>
+    <input type="range" class="custom-range" id="side-customRange1" />
+  </div>
+
+  <div class="" id="color-palette">
+    <h5 class="font-weight-bold">Colors</h5>
+    <div class="">
+      <span class="color-circle brown"> </span>
+      <span class="color-circle red"></span>
+      <span class="color-circle blue"></span>
+      <span class="color-circle yellow"></span>
+      <span class="color-circle green"></span>
+      <span class="color-circle white"></span>
+      <span class="color-circle black"></span>
+      <span class="color-circle gray"></span>
+    </div>
+  </div>
+</div>
