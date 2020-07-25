@@ -26,6 +26,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { ProductList2Component } from './components/product-list2/product-list2.component';
 import { FilterPaletteComponent } from './components/shared/filter-palette/filter-palette.component';
 import { SideFilterPaletteComponent } from './components/shared/side-filter-palette/side-filter-palette.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { SideFilterPaletteComponent } from './components/shared/side-filter-pale
     ProductList2Component,
     FilterPaletteComponent,
     SideFilterPaletteComponent,
+    ProductDetailComponent,
   ],
   imports: [
     BrowserModule,

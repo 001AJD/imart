@@ -17,7 +17,22 @@ cdk-virtual-scroll-viewport {
   -ms-transform: none; /* IE 9 */
   -webkit-transform: none; /* Safari 3-8 */
   transform: none;
-  cursor: pointer;
+
   transition: 0.5s;
 }
+.title-link:hover {
+  cursor: pointer;
+  color: blue;
+  outline: none;
+  transition: 350ms;
+}
+.btn-sort {
+  padding: 0.25rem 0.25rem 0.25rem 0.25rem;
+  margin: 0rem 0.2rem 0rem 0.2rem;
+  background-color: #fff;
+  border: none;
+}
 
+.btn-sort:focus {
+  border: 0.1rem solid black;
+}

@@ -9,6 +9,7 @@ import { Product } from '../model/product';
 })
 export class ProductService {
   products: Observable<Product[]>;
+  product: any;
 
   constructor(private af: AngularFirestore) {}
 
@@ -98,5 +99,29 @@ export class ProductService {
     }
 
     return this.products;
+  }
+
+  getProductById(pid: string): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      this.af
+        .collection('products')
+        .doc<Product>(pid)
+        .valueChanges()
+        .subscribe((product) => {
+          if (product) {
+            resolve(product);
+          } else {
+            reject('failed to fetch data');
+          }
+        });
+    });
+
+    // this.af
+    //   .collection('products')
+    //   .doc<Product>(pid)
+    //   .valueChanges()
+    //   .subscribe((product) => {
+    //     this.product = product;
+    //   });
   }
 }

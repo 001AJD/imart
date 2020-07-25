@@ -65,9 +65,4 @@ export class ProductList2Component implements OnInit {
       alert('login to add Product to cart');
     }
   }
-
-  toggleFilterPalette(): void {
-    this.showFilterPalette = !this.showFilterPalette;
-    console.log(this.showFilterPalette);
-  }
 }
