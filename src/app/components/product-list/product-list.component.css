@@ -8,3 +8,19 @@ cdk-virtual-scroll-viewport {
   width: 0px;
   background: transparent;
 }
+.title-link:hover {
+  cursor: pointer;
+  color: blue;
+  outline: none;
+  transition: 350ms;
+}
+.btn-sort {
+  padding: 0.25rem 0.25rem 0.25rem 0.25rem;
+  margin: 0rem 0.2rem 0rem 0.2rem;
+  background-color: #fff;
+  border: none;
+}
+
+.btn-sort:focus {
+  border: 0.1rem solid black;
+}
