@@ -90,25 +90,14 @@ export class CartService {
     this.afAuth.authState.subscribe((user) => {
       if (user) {
         this.userId = user.uid;
-        this.products = this.afs
-          .collection('products')
-          .snapshotChanges()
-          .pipe(
-            map((actions) =>
-              actions.map((a) => {
-                {
-                  const data = a.payload.doc.data() as Product;
-                  return {
-                    id: a.payload.doc.id,
-                    title: data.title,
-                    description: data.description,
-                    quantity: data.quantity,
-                    price: data.price,
-                  };
-                }
-              })
-            )
-          );
+
+        this.afs
+          .collection('users')
+          .doc<User>(`${this.userId}`)
+          .valueChanges()
+          .subscribe((userDoc) => {
+            this.cartTotalItem = userDoc.cart.length;
+          });
       }
     });
   }

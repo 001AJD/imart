@@ -62,6 +62,27 @@
     <h1 *ngIf="productDetails?.title">{{ productDetails?.title }}</h1>
     <p *ngIf="productDetails?.description">{{ productDetails?.description }}</p>
     <h2 *ngIf="productDetails?.price">{{ productDetails?.price }}</h2>
-    <button class="btn btn-outline-secondary">Buy Now</button>
+
+    <form [formGroup]="orderQuantityFormGroup">
+      <button class="btn-quantity" (click)="decrementQuantity()">
+        -
+      </button>
+      <input
+        id="orderQty"
+        type="number"
+        class="text-center"
+        formControlName="quantity"
+        (blur)="checkOrderQuantity($event)"
+        min="1"
+        max="15"
+      />
+      <button class="btn-quantity" (click)="incrementQuantity()">
+        +
+      </button>
+
+      <button class="btn btn-outline-secondary my-2 mx-2">Add to Cart</button>
+      <button class="btn btn-secondary my-2 mx-2">Buy Now</button>
+    </form>
+    <div class=""></div>
   </div>
 </div>

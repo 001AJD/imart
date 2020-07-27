@@ -9,6 +9,7 @@ import { CartService } from '../../services/cart.service';
 })
 export class CartComponent implements OnInit {
   cartQuantity = 1;
+
   constructor(
     public authService: AuthService,
     private cartService: CartService
@@ -36,11 +37,12 @@ export class CartComponent implements OnInit {
     };
     this.cartService.removeItemFromCart(cart);
   }
+
   updateProductQuantity(
     pid: string,
     price1: string,
     title1: string,
-    $event: Event
+    event: number
   ): void {
     const product = {
       id: pid,
@@ -49,6 +51,6 @@ export class CartComponent implements OnInit {
     };
     console.log(product);
     console.log('quntity changed');
-    console.log($event.target);
+    console.log(event);
   }
 }

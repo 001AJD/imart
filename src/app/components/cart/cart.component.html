@@ -21,13 +21,14 @@
         <td>{{ item.title }}</td>
         <td>
           <input
+            id="item.id"
             type="number"
             name="productQty"
             min="1"
             max="10"
             [value]="item.quantity"
             (change)="
-              updateProductQuantity(item.id, item.price, item.title, $event)
+              updateProductQuantity(item.id, item.price, item.title, item.quantity)
             "
           />
         </td>

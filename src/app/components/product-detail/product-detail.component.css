@@ -1,0 +1,28 @@
+.form-control {
+  max-width: 4em;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  padding: 3px 6px;
+}
+
+.btn-quantity {
+  border: solid 1px gray;
+  border-radius: 50%;
+  background-color: #fff;
+  margin: 0.25em;
+  padding: 0.3em;
+  width: 2em;
+
+}
+
+.btn-quantity:focus {
+  outline: none;
+}

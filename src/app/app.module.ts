@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ScrollingModule } from '@angular/cdk/scrolling';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -10,7 +10,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
-
 
 import { ProductService } from './services/product.service';
 import { AuthService } from './services/auth.service';
@@ -27,7 +26,6 @@ import { ProductList2Component } from './components/product-list2/product-list2.
 import { FilterPaletteComponent } from './components/shared/filter-palette/filter-palette.component';
 import { SideFilterPaletteComponent } from './components/shared/side-filter-palette/side-filter-palette.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
-
 
 @NgModule({
   declarations: [
@@ -51,7 +49,8 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
     AngularFireAuthModule,
     ScrollingModule,
     FormsModule,
-    BrowserAnimationsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
   ],
   providers: [ProductService, AuthService, CartService],
   bootstrap: [AppComponent],
