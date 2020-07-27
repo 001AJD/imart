@@ -3,6 +3,9 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import * as firebase from 'firebase/app';
 import { User } from '../model/user';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { Product } from '../model/product';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +15,7 @@ export class CartService {
   cartTotal: number;
   cartTotalItem: number;
   userId: string;
+  products: Observable<any[]>;
 
   constructor(private afs: AngularFirestore, private afAuth: AngularFireAuth) {}
 
@@ -86,14 +90,25 @@ export class CartService {
     this.afAuth.authState.subscribe((user) => {
       if (user) {
         this.userId = user.uid;
-
-        this.afs
-          .collection('users')
-          .doc<User>(`${this.userId}`)
-          .valueChanges()
-          .subscribe((userDoc) => {
-            this.cartTotalItem = userDoc.cart.length;
-          });
+        this.products = this.afs
+          .collection('products')
+          .snapshotChanges()
+          .pipe(
+            map((actions) =>
+              actions.map((a) => {
+                {
+                  const data = a.payload.doc.data() as Product;
+                  return {
+                    id: a.payload.doc.id,
+                    title: data.title,
+                    description: data.description,
+                    quantity: data.quantity,
+                    price: data.price,
+                  };
+                }
+              })
+            )
+          );
       }
     });
   }
