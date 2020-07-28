@@ -82,7 +82,18 @@
         +
       </button>
 
-      <button class="btn btn-outline-secondary my-2 mx-2">Add to Cart</button>
+      <button
+        class="btn btn-outline-secondary my-2 mx-2"
+        (click)="
+          addToCart(
+            pid,
+            productDetails?.title,
+            productDetails?.price
+          )
+        "
+      >
+        Add to Cart
+      </button>
       <button class="btn btn-secondary my-2 mx-2">Buy Now</button>
     </form>
     <div class="">
@@ -188,7 +199,9 @@
         <p class="card-text">
           <small class="text-muted">Last updated 3 mins ago</small>
         </p>
-        <button class="btn btn-secondary btn-sm">Add to Cart</button>
+        <button class="btn btn-secondary btn-sm">
+          Add to Cart
+        </button>
       </div>
     </div>
   </div>

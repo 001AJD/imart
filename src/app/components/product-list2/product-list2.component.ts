@@ -60,6 +60,7 @@ export class ProductList2Component implements OnInit {
         price: productPrice,
         quantity: Number(productQuantity),
       };
+      // console.log(product);
       this.cartService.addProductToCart(product);
     } else {
       alert('login to add Product to cart');

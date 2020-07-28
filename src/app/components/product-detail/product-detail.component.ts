@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../../services/product.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+
+import { ProductService } from '../../services/product.service';
+import { CartService } from '../../services/cart.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -18,15 +21,15 @@ export class ProductDetailComponent implements OnInit {
   constructor(
     private ps: ProductService,
     private fb: FormBuilder,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private cartService: CartService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
     this.pid = this.activatedRoute.snapshot.params.id;
     this.createOrderQuantityForm();
     this.getProductDetails(this.pid);
-
-    console.log(this.pid);
   }
 
   getProductDetails(pid: string): void {
@@ -72,6 +75,22 @@ export class ProductDetailComponent implements OnInit {
     }
     if (num > 15) {
       this.orderQuantityFormGroup.get('quantity').setValue(15);
+    }
+  }
+
+  addToCart(pid: string, productTitle: string, productPrice: string): void {
+    const qty = this.orderQuantityFormGroup.get('quantity').value;
+    const product = {
+      id: pid,
+      title: productTitle,
+      price: Number(productPrice),
+      quantity: Number(qty),
+    };
+
+    if (this.authService.user) {
+      this.cartService.addProductToCart(product);
+    } else {
+      alert('login to add to cart');
     }
   }
 }

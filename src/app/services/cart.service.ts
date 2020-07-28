@@ -23,10 +23,47 @@ export class CartService {
     this.afAuth.authState.subscribe((user) => {
       if (user) {
         this.userId = user.uid;
+
         this.afs
           .collection('users')
-          .doc(`${this.userId}`)
-          .update({ cart: firebase.firestore.FieldValue.arrayUnion(product) });
+          .doc<User>(this.userId)
+          .get()
+          .subscribe((userDoc) => {
+            const data = userDoc.data().cart;
+
+            /* check if the user cart is empty if user cart is empty add new product
+              if user cart is not empty check if the product we are trying to add already exists
+              if product already exists then just increas the quantity of the product in the user's cart
+              if product does not exists in the user's cart then add it
+            */
+
+            if (data.length !== 0) {
+              data.forEach((element) => {
+                if (element.id === product.id) {
+                  element.quantity += 1;
+
+                  this.afs
+                    .collection('users')
+                    .doc(this.userId)
+                    .set({ cart: data }, { merge: true });
+                } else {
+                  this.afs
+                    .collection('users')
+                    .doc(this.userId)
+                    .update({
+                      cart: firebase.firestore.FieldValue.arrayUnion(product),
+                    });
+                }
+              });
+            } else {
+              this.afs
+                .collection('users')
+                .doc(this.userId)
+                .update({
+                  cart: firebase.firestore.FieldValue.arrayUnion(product),
+                });
+            }
+          });
       }
     });
   }
