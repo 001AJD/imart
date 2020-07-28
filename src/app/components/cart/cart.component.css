@@ -1,0 +1,8 @@
+.div-center {
+  text-align: center;
+  font-size: 2rem;
+}
+.div-center i {
+  font-size: 10rem;
+  text-decoration-color: gray;
+}

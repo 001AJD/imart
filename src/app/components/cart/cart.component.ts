@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { CartService } from '../../services/cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -12,13 +13,13 @@ export class CartComponent implements OnInit {
 
   constructor(
     public authService: AuthService,
-    private cartService: CartService
-  ) {
-    this.getAllProducts();
-  }
+    private cartService: CartService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    console.log(this.cartService.cartTotalItem);
+    this.cartService.getCartTotalItem();
+    this.getAllProducts();
   }
 
   getAllProducts(): void {
@@ -54,5 +55,9 @@ export class CartComponent implements OnInit {
     console.log(product);
     console.log('quntity changed');
     console.log(event);
+  }
+
+  startShopping(): void {
+    this.router.navigate(['product-list-2']);
   }
 }

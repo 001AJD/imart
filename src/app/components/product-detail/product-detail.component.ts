@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product-detail',
@@ -12,13 +13,20 @@ export class ProductDetailComponent implements OnInit {
 
   orderQuantityFormGroup: FormGroup;
 
-  pid = '0KoYl2PftIgEb39N0BSt'; // get value of this var from route
+  pid = ''; // get value of this var from route
 
-  constructor(private ps: ProductService, private fb: FormBuilder) {}
+  constructor(
+    private ps: ProductService,
+    private fb: FormBuilder,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
+    this.pid = this.activatedRoute.snapshot.params.id;
     this.createOrderQuantityForm();
     this.getProductDetails(this.pid);
+
+    console.log(this.pid);
   }
 
   getProductDetails(pid: string): void {

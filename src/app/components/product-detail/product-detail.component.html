@@ -59,11 +59,11 @@
   </div>
 
   <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 col-xl-7 scrollspy-example">
-    <h1 *ngIf="productDetails?.title">{{ productDetails?.title }}</h1>
+    <h3 *ngIf="productDetails?.title">{{ productDetails?.title }}</h3>
     <p *ngIf="productDetails?.description">{{ productDetails?.description }}</p>
-    <h2 *ngIf="productDetails?.price">
+    <h5 *ngIf="productDetails?.price">
       <i class="fa fa-rupee"></i> {{ productDetails?.price }}
-    </h2>
+    </h5>
 
     <form [formGroup]="orderQuantityFormGroup">
       <button class="btn-quantity" (click)="decrementQuantity()">
@@ -116,7 +116,7 @@
 </div>
 
 <div class="row mx-3 mb-5">
-  <h2>You may also like</h2>
+  <h4>You may also like</h4>
   <div class="card-deck">
     <div class="card">
       <img
