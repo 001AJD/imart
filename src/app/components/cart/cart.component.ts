@@ -17,7 +17,9 @@ export class CartComponent implements OnInit {
     this.getAllProducts();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.cartService.cartTotalItem);
+  }
 
   getAllProducts(): void {
     this.cartService.getCartProducts();

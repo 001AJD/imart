@@ -20,9 +20,13 @@ input[type="number"] {
   margin: 0.25em;
   padding: 0.3em;
   width: 2em;
-
 }
 
 .btn-quantity:focus {
   outline: none;
+}
+
+#carouselExampleIndicators {
+  padding: 0.25em;
+  box-shadow: 0.25em 0.25em 0.5em 0.25em rgb(214, 214, 214);
 }
