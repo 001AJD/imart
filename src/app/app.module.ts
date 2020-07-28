@@ -26,6 +26,7 @@ import { ProductList2Component } from './components/product-list2/product-list2.
 import { FilterPaletteComponent } from './components/shared/filter-palette/filter-palette.component';
 import { SideFilterPaletteComponent } from './components/shared/side-filter-palette/side-filter-palette.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
     FilterPaletteComponent,
     SideFilterPaletteComponent,
     ProductDetailComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

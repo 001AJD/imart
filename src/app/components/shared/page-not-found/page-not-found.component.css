@@ -1,0 +1,11 @@
+div {
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.img-fluid {
+  max-width: 8em;
+  max-height: 10em;
+  box-shadow: 0.25rem 0.25rem 2rem 0.25rem gray;
+  margin-top: 1em;
+}
