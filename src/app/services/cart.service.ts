@@ -3,9 +3,9 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import * as firebase from 'firebase/app';
 import { User } from '../model/user';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { Product } from '../model/product';
+import { map } from 'rxjs/operators';
+import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,8 +16,13 @@ export class CartService {
   cartTotalItem: number;
   userId: string;
   products: Observable<any[]>;
+  cartItems: Observable<any>;
 
-  constructor(private afs: AngularFirestore, private afAuth: AngularFireAuth) {}
+  constructor(
+    private afs: AngularFirestore,
+    private afAuth: AngularFireAuth,
+    private authService: AuthService
+  ) {}
 
   addProductToCart(product): void {
     this.afAuth.authState.subscribe((user) => {
@@ -71,21 +76,39 @@ export class CartService {
     });
   }
 
-  async getCartProducts(): Promise<any> {
-    this.afAuth.authState.subscribe((user) => {
-      if (user) {
-        this.userId = user.uid;
-        this.afs
-          .collection('users')
-          .doc<User>(`${this.userId}`)
-          .valueChanges()
-          .subscribe((userDoc) => {
-            this.cart = userDoc.cart;
+  // async getCartProducts(): Promise<any> {
+  //   this.afAuth.authState.subscribe((user) => {
+  //     if (user) {
+  //       this.userId = user.uid;
+  //       this.afs
+  //         .collection('users')
+  //         .doc<User>(`${this.userId}`)
+  //         .valueChanges()
+  //         .subscribe((userDoc) => {
+  //           this.cart = userDoc.cart;
+  //           this.updateCartTotal();
+  //         });
+  //     }
+  //   });
+  //   return this.cart;
+  // }
+
+  getCartproducts2(uid: string): Observable<any> {
+    if (this.authService.isLoggedIn()) {
+      this.cartItems = this.afs
+        .collection('users')
+        .doc<User>(uid)
+        .valueChanges()
+        .pipe(
+          map((userDoc) => {
+            const data = userDoc.cart;
+            this.cart = data;
             this.updateCartTotal();
-          });
-      }
-    });
-    return this.cart;
+            return data;
+          })
+        );
+      return this.cartItems;
+    }
   }
 
   updateCartTotal(): void {

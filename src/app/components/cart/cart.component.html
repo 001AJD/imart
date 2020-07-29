@@ -12,7 +12,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of cartService.cart">
+        <tr *ngFor="let item of cartItems">
           <td>
             <img
               src="../../../assets/images/mobile-resize-1.jpg"
@@ -29,6 +29,7 @@
                 min="1"
                 max="15"
                 formControlName="quantity"
+                value="10"
                 (change)="
                   updateProductQuantity(item.id, item.price, item.title)
                 "

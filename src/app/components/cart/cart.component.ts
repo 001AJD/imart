@@ -3,7 +3,7 @@ import { AuthService } from '../../services/auth.service';
 import { CartService } from '../../services/cart.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { groupBy } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
@@ -11,8 +11,9 @@ import { groupBy } from 'rxjs/operators';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
-
+  cartItems: Observable<any>;
   qtyFormGroup: FormGroup;
+  userId: string;
 
   constructor(
     public authService: AuthService,
@@ -28,7 +29,17 @@ export class CartComponent implements OnInit {
   }
 
   getAllProducts(): void {
-    this.cartService.getCartProducts();
+
+    this.authService
+      .isLoggedIn()
+      .then((userDoc) => {
+        this.userId = userDoc.uid;
+      })
+      .then(() => {
+        this.cartService.getCartproducts2(this.userId).subscribe((cart) => {
+          this.cartItems = cart;
+        });
+      });
   }
 
   removeItem(
@@ -64,9 +75,10 @@ export class CartComponent implements OnInit {
   createQtyForm(): void {
     this.qtyFormGroup = this.fb.group({
       quantity: [
-        '1',
+        '5',
         [Validators.required, Validators.min(1), Validators.max(15)],
       ],
     });
   }
+  getCartItems(): void {}
 }

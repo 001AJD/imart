@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { auth } from 'firebase/app';
 import { Router } from '@angular/router';
+import { first } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -45,5 +46,9 @@ export class AuthService {
       .collection('users')
       .doc(`${user.uid}`)
       .set(data, { merge: true });
+  }
+
+  isLoggedIn(): Promise<any> {
+    return this.afAuth.authState.pipe(first()).toPromise();
   }
 }
