@@ -40,12 +40,15 @@ export class CartService {
             if (data.length !== 0) {
               data.forEach((element) => {
                 if (element.id === product.id) {
-                  element.quantity += 1;
-
-                  this.afs
-                    .collection('users')
-                    .doc(this.userId)
-                    .set({ cart: data }, { merge: true });
+                  if (element.quantity < 15) {
+                    element.quantity += 1;
+                    this.afs
+                      .collection('users')
+                      .doc(this.userId)
+                      .set({ cart: data }, { merge: true });
+                  } else {
+                    alert('Cannot order more than 15 units');
+                  }
                 } else {
                   this.afs
                     .collection('users')
@@ -88,11 +91,11 @@ export class CartService {
   updateCartTotal(): void {
     let cartSum = Number(0);
     this.cart.forEach((element) => {
-      cartSum += Number(element.price);
+      cartSum += Number(element.price) * Number(element.quantity);
     });
     this.afs
       .collection('users')
-      .doc(`${this.userId}`)
+      .doc(this.userId)
       .set({ cartTotal: Number(cartSum) }, { merge: true })
       .then(() => {
         this.afs
@@ -137,5 +140,9 @@ export class CartService {
           });
       }
     });
+  }
+
+  updateProductQty(product): void {
+    console.log(product);
   }
 }

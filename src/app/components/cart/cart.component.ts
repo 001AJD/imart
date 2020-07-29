@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { CartService } from '../../services/cart.service';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { groupBy } from 'rxjs/operators';
 
 @Component({
   selector: 'app-cart',
@@ -9,15 +11,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
-  cartQuantity = 1;
+
+  qtyFormGroup: FormGroup;
 
   constructor(
     public authService: AuthService,
     private cartService: CartService,
-    private router: Router
+    private router: Router,
+    private fb: FormBuilder
   ) {}
 
   ngOnInit(): void {
+    this.createQtyForm();
     this.cartService.getCartTotalItem();
     this.getAllProducts();
   }
@@ -41,23 +46,27 @@ export class CartComponent implements OnInit {
     this.cartService.removeItemFromCart(cart);
   }
 
-  updateProductQuantity(
-    pid: string,
-    price1: string,
-    title1: string,
-    event: number
-  ): void {
+  updateProductQuantity(pid: string, price1: string, title1: string): void {
     const product = {
       id: pid,
       price: price1,
       title: title1,
+      quantity: this.qtyFormGroup.get('quantity').value,
     };
     console.log(product);
-    console.log('quntity changed');
-    console.log(event);
+    this.cartService.updateProductQty(product);
   }
 
   startShopping(): void {
     this.router.navigate(['product-list-2']);
+  }
+
+  createQtyForm(): void {
+    this.qtyFormGroup = this.fb.group({
+      quantity: [
+        '1',
+        [Validators.required, Validators.min(1), Validators.max(15)],
+      ],
+    });
   }
 }
