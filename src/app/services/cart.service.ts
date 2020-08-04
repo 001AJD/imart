@@ -166,6 +166,6 @@ export class CartService {
   }
 
   updateProductQty(product): void {
-    console.log(product);
+    // console.log(product);
   }
 }

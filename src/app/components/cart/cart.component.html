@@ -1,6 +1,6 @@
-<div class="container" *ngIf="authService.user; else login">
+<div class="container" *ngIf="authService.isLoggedIn(); else login">
   <div *ngIf="cartService.cartTotalItem; else emptyCart">
-    <h3>Cart</h3>
+    <h3 class="text-center">Shopping Cart</h3>
     <table class="table">
       <thead class="thead-light">
         <tr>
@@ -29,7 +29,6 @@
                 min="1"
                 max="15"
                 formControlName="quantity"
-                value="10"
                 (change)="
                   updateProductQuantity(item.id, item.price, item.title)
                 "

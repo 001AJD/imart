@@ -29,7 +29,6 @@ export class CartComponent implements OnInit {
   }
 
   getAllProducts(): void {
-
     this.authService
       .isLoggedIn()
       .then((userDoc) => {

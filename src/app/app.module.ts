@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
+import { MaterialModule } from './modules/material/material.module';
 
 import { ProductService } from './services/product.service';
 import { AuthService } from './services/auth.service';
@@ -53,6 +54,7 @@ import { PageNotFoundComponent } from './components/shared/page-not-found/page-n
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    MaterialModule,
   ],
   providers: [ProductService, AuthService, CartService],
   bootstrap: [AppComponent],
