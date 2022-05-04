@@ -1,4 +1,4 @@
-# OnlineStore
+# OnlineStore - https://imart-211a2.firebaseapp.com/
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.1.
 
